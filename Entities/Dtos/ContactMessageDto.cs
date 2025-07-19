@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class ContactMessageDto : IDto
+    public class ContactMessageDto : IDto 
     {
         public string Name { get; set; }
         public string Email { get; set; }

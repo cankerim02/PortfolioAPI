@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Dtos
 {
-    public class ReplyMessageDto : IDto
+    public class ReplyMessageDto : IDto 
     {
         public string Reply { get; set; }
     }
