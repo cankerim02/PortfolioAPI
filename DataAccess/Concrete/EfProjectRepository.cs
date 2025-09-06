@@ -1,5 +1,6 @@
 ﻿using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.Dtos;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -37,6 +38,20 @@ namespace DataAccess.Concrete
         public async Task<List<Project>> GetAllProjectAsync()
         {
             return await _context.Projects.ToListAsync();
+        }
+
+        public async Task<List<ProjectDto>> GetAllProjectDtoAsync()
+        {
+            return await _context.Projects
+        .Select(p => new ProjectDto
+        {
+            Id = p.Id,
+            ProjectName = p.Title,
+            StartDate = p.StartDate,
+            EndDate = p.EndDate
+           
+        })
+        .ToListAsync();
         }
 
         public async Task<Project> GetProjectByIdAsync(int id)
