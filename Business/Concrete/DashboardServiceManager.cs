@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
+using DataAccess.Concrete;
 using Entities.Dtos;
 using System;
 using System.Collections.Generic;
@@ -12,10 +13,29 @@ namespace Business.Concrete
     public class DashboardServiceManager : IDashboardService
     {
         private readonly IDashboardRepository _dashboardRepository;
+        private readonly IProjectRepository _projectRepository;
 
-        public DashboardServiceManager(IDashboardRepository dashboardRepository)
+
+        public DashboardServiceManager(IDashboardRepository dashboardRepository, IProjectRepository projectRepository)
         {
             _dashboardRepository = dashboardRepository;
+            _projectRepository = projectRepository;
+        }
+
+        public async Task<List<CalendarEventDto>> GetCalendarEventsAsync()
+        {
+            // projeleri çekip takvim formatına dönüştür
+            var projects = await _projectRepository.GetAllProjectDtoAsync();
+
+            var events = projects.Select(p => new CalendarEventDto
+            {
+                Title = p.ProjectName,
+                Start = p.StartDate,
+                End = p.EndDate,
+
+            }).ToList();
+
+            return events;
         }
 
         public async Task<DashboardDto> GetDashboardDataAsync()
