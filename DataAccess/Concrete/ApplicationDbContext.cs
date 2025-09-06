@@ -16,7 +16,18 @@ namespace DataAccess.Concrete
             
         }
 
-        
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Project>(entity =>
+            {
+                entity.Property(p => p.StartDate)
+                .HasDefaultValueSql("GETDATE()");
+                entity.Property(p => p.EndDate)
+               .HasDefaultValueSql("DATEADD(DAY, 1, GETDATE())");
+            });
+        }
+
+
         public DbSet<ContactMessage> ContactMessages { get; set; }
         public DbSet<Project> Projects { get; set; }
 
