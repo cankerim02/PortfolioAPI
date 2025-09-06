@@ -10,5 +10,8 @@ namespace Business.Abstract
     public interface IDashboardService
     {
         Task<DashboardDto> GetDashboardDataAsync();
+
+        Task<List<CalendarEventDto>> GetCalendarEventsAsync();
+
     }
 }
