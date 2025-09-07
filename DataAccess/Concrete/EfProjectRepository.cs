@@ -37,7 +37,21 @@ namespace DataAccess.Concrete
 
         public async Task<List<Project>> GetAllProjectAsync()
         {
-            return await _context.Projects.ToListAsync();
+            var projects = await _context.Projects.ToListAsync();
+          
+            if (projects == null || !projects.Any())
+                return new List<Project>();
+            projects = projects.Select(p => new Project
+            {
+                Id = p.Id,
+                Title = p.Title,
+                StartDate = p.StartDate,
+                EndDate = p.EndDate,
+                Description = p.Description,
+                ImageUrl = p.ImageUrl,
+                ProjectUrl = p.ImageUrl
+            }).ToList();
+            return projects;
         }
 
         public async Task<List<ProjectDto>> GetAllProjectDtoAsync()
