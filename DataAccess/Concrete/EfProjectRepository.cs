@@ -49,7 +49,7 @@ namespace DataAccess.Concrete
                 EndDate = p.EndDate,
                 Description = p.Description,
                 ImageUrl = p.ImageUrl,
-                ProjectUrl = p.ImageUrl
+                ProjectUrl = p.ProjectUrl
             }).ToList();
             return projects;
         }
