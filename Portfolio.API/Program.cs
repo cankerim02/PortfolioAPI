@@ -46,7 +46,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngularApp",
         policy =>
         {
-            policy.WithOrigins("https://portfolioapi-hqc4.onrender.com")
+            policy.WithOrigins("https://cankerim.netlify.app")
             .AllowAnyHeader()
             .AllowAnyMethod();
         });
