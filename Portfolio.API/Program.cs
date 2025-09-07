@@ -46,7 +46,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy("AllowAngularApp",
         policy =>
         {
-            policy.WithOrigins("http://localhost:4200")
+            policy.WithOrigins("https://portfolioapi-hqc4.onrender.com")
             .AllowAnyHeader()
             .AllowAnyMethod();
         });
