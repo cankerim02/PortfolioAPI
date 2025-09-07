@@ -17,7 +17,7 @@ namespace Portfolio.API.Controllers
             _userService = userService;
         }
 
-        [Authorize(Roles = "admin")] // Aktif edebilirsin istersen
+        //[Authorize(Roles = "admin")] // Aktif edebilirsin istersen
         [HttpPost("add")]
         public async Task<IActionResult> AddUser([FromBody] UserAddDto userDto)
         {
