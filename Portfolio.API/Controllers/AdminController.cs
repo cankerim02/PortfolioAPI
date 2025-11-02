@@ -42,9 +42,11 @@ namespace Portfolio.API.Controllers
 
             message.AdminReply = dto.Reply;
             message.RepliedAt = DateTime.UtcNow;
-
-            await _emailService.SendEmailAsync(message.Email, "Yanıtınız Var", dto.Reply);
             await _repository.UpdateContactAsync(message);
+
+            // Mail gönderimini fire-and-forget olarak başlat
+            _ = _emailService.SendEmailAsync(message.Email, "Yanıtınız Var", dto.Reply);
+            
 
             return Ok(new { success = true, message = "Yanıt gönderildi." });
         }
