@@ -37,7 +37,8 @@ builder.Services.AddScoped<IAuthServices, AuthServicesManager>();
 builder.Services.AddScoped<IJwtHelper, JwtHelper>();
 
 
-
+builder.Services.AddScoped<IServiceLogServices, ServiceLogManager>();
+builder.Services.AddScoped<IServiceLogRepository, EfServiceLogRepository>();
 
 
 // CORS Policy
