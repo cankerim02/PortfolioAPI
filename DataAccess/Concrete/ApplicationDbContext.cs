@@ -32,6 +32,7 @@ namespace DataAccess.Concrete
         public DbSet<Project> Projects { get; set; }
 
         public DbSet<User> Users{ get; set; }
+        public DbSet<ServiceLog> ServiceLogs { get; set; }
 
 
     }
